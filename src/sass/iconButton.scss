@@ -1,0 +1,20 @@
+// Simple icon button
+// since Buefy doesn't seem to have one
+
+// TODO: make this a component?
+
+.icon-button {
+    display: inline-block;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    color: inherit;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    height: 2.25rem;
+    width: 2.25rem;
+    background: transparent;
+    border: 0;
+    box-sizing: border-box;
+}

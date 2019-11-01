@@ -1,6 +1,6 @@
 <template>
     <header class="app-header has-text-white has-background-primary">
-        <!-- menu icon -->
+        <!-- TODO: only show on detail, wire up to go back to list -->
         <button type="button" 
                 class="icon-button" 
                 aria-label="Menu"
@@ -16,14 +16,11 @@
 
 <script>
 export default {
-  name: 'AppHeader',
-  props: {
-  }
+  name: 'AppHeader'
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 .app-header {
     display: flex;
     align-items: center;
@@ -32,14 +29,5 @@ export default {
     h1 {
         flex: 1;
     }
-}
-
-/* TODO: this should be global? Or maybe a component */
-.icon-button {
-    font-size: 1.25rem;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    border: 0;
 }
 </style>

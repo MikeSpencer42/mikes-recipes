@@ -1,19 +1,20 @@
 <template>
   <div id="app">
       <AppHeader></AppHeader>
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <!-- TODO: toggle between list and detail -->
+      <AppList></AppList>
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import AppList from './components/AppList.vue'
 
 export default {
   name: 'app',
   components: {
     AppHeader,
-    HelloWorld
+    AppList
   }
 }
 </script>

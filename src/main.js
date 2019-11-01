@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Buefy from 'buefy'
 Vue.use(Buefy)
 
-import App from './App.vue'
-
 // Styles
 import './assets/css/fontawesome.all.min.css'
 import './sass/app.scss'
+
+import App from './App.vue'
 
 Vue.config.productionTip = false
 
