@@ -1,50 +1,53 @@
 <template>
-    <ul class="app-list" 
-        v-if="recipes.length">
-        <!-- TODO: repeat over dataset -->
-        <li v-for="recipe in recipes" 
-            v-bind:key="recipe.id">
-            <a>
-                <button type="button"
-                        class="icon-button favorite"
-                        v-bind:class="{'has-text-warning': recipe.favorite}"
-                        aria-label="View Recipe"
-                        title="View Recipe">
-                    <i class="fas fa-star"></i>
-                </button>
-                <div class="primary">
-                    <h2 class="title is-5">{{ recipe.name }}</h2>
-                    <!-- TODO: consider computed property -->
-                    <p class="subtitle is-6">Total Time: {{ recipe.time.prep + recipe.time.cook }} mins</p>
-                    <div class="tags">
-                        <b-tag rounded 
-                               v-for="tag in recipe.tags"
-                               v-bind:key="tag">
-                           {{ tag }}
-                       </b-tag>
+    <div>
+        <div class="search">
+            <label for="search">Search for a recipe</label>
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" 
+                           type="email" 
+                           placeholder="i.e. butternut squash soup">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <ul class="app-list" 
+            v-if="recipes.length">
+            <li v-for="recipe in recipes" 
+                v-bind:key="recipe.id">
+                <a @click="viewRecipe">
+                    <i class="fas fa-star favorite"
+                       v-bind:class="{'has-text-warning': recipe.favorite}"></i>
+                    <div class="primary">
+                        <h2 class="title is-5">{{ recipe.name }}</h2>
+                        <!-- TODO: consider computed property -->
+                        <p class="subtitle is-6">Total Time: {{ recipe.time.prep + recipe.time.cook }} mins</p>
+                        <div class="tags">
+                            <span class="tag is-light"
+                                  v-for="(tag, index) in recipe.tags"
+                                  v-bind:key="index">
+                               {{ tag }}
+                           </span>
+                        </div>
                     </div>
-                </div>
-                <div class="secondary">
-                    <button type="button"
-                            class="icon-button"
-                            aria-label="View Recipe"
-                            title="View Recipe">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                    <button type="button"
-                            class="icon-button"
-                            aria-label="Edit Recipe"
-                            title="Edit Recipe">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                </div>
-            </a>
-        </li>
-    </ul>
+                    <div class="secondary">
+                        <button type="button"
+                                class="icon-button"
+                                aria-label="Edit Recipe"
+                                title="Edit Recipe"
+                                @click="editRecipe">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
-// TODO: is this the proper syntax?
 export default {
     name: 'AppList',
     data: function() {
@@ -118,12 +121,26 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        viewRecipe() {
+            // open recipe
+            alert('view recipe')
+        },
+        editRecipe(event) {
+            event.stopPropagation();
+            alert('edit recipe');
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    // TODO: move styles to separate stylesheet to get access to Bulma SCSS variables
+    .search {
+        padding: .75em;
+        background: #eee;
+    }
+
     .app-list {
         li:not(:last-child) {
             border-bottom: 1px solid #ddd; // $border
@@ -134,11 +151,11 @@ export default {
             padding: .75rem;
 
             &:hover, &:focus {
-                background: #eee;
+                background: #fafafa;
             }
 
             .favorite {
-                margin-right: .75rem;
+                margin: .25rem .75rem 0 0;
             }
 
             .primary {
